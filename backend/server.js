@@ -1,25 +1,28 @@
-// server.js
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const marketRoutes = require('./routes/marketRoutes');
+const buyerRoutes = require('./routes/buyerRoutes');
+const errorHandler = require('./middleware/errorHandler');
 
 dotenv.config();
+connectDB();
 
 const app = express();
 
 // Middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors()); // Enable CORS for cross-origin requests
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.error(err));
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/market', marketRoutes);
+app.use('/api/buyers', buyerRoutes);
 
-// Basic route
-app.get('/', (req, res) => res.send('API Running'));
+// Error handling middleware
+app.use(errorHandler);
 
-// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
