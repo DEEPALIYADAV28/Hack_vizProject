@@ -15,7 +15,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Buyers',
+  name: 'BuyersPage',
   data() {
     return {
       buyers: [],

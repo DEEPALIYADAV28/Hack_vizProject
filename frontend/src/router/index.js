@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 // Lazy load components
-const Home = () => import('../views/Home.vue');
-const Login = () => import('../views/Login.vue');
-const Register = () => import('../views/Register.vue');
-const MarketTrends = () => import('../views/MarketTrends.vue');
-const Buyers = () => import('../views/Buyers.vue');
+const Home = () => import('../views/HomePage.vue');
+const Login = () => import('../views/LoginPage.vue');
+const Register = () => import('../views/RegisterPage.vue');
+const MarketTrends = () => import('../views/MarketPage.vue');
+const Buyers = () => import('../views/BuyersPage.vue');
 const PricePrediction = () => import('../views/PricePrediction.vue');
 const NotFound = () => import('../views/NotFound.vue'); // 404 Page
 

@@ -13,7 +13,7 @@
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'Register',
+  name: 'RegisterPage',
   data() {
     return {
       username: '',

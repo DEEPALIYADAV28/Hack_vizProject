@@ -11,7 +11,7 @@ import MarketTrends from '../components/MarketTrends.vue';
 import PricePrediction from '../components/PricePrediction.vue';
 
 export default {
-  name: 'Market',
+  name: 'MarketPage',
   components: { MarketTrends, PricePrediction },
 };
 </script>
