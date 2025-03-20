@@ -1,17 +1,20 @@
-login <template>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form @submit.prevent="handleLogin">
-      <label>Email:</label>
-      <input type="email" v-model="email" required />
+<template>
+  <div class="overlay">
+    <div class="login-box">
+      <button class="close-btn" @click="$emit('close')">✖</button>
+      <h2>Welcome Back!</h2>
+      <p>Please log in to continue</p>
 
-      <label>Password:</label>
-      <input type="password" v-model="password" required />
+      <form @submit.prevent="handleLogin">
+        <input type="email" v-model="email" placeholder="Enter your email" required />
+        <input type="password" v-model="password" placeholder="Enter your password" required />
+        <button type="submit">Login</button>
+      </form>
 
-      <button type="submit">Login</button>
-    </form>
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
 
-    <p>Don't have an account? <router-link to="/register">Sign Up</router-link></p>
+      <p>Don't have an account? <span @click="$emit('switchToRegister')">Sign up</span></p>
+    </div>
   </div>
 </template>
 
@@ -22,73 +25,88 @@ export default {
     return {
       email: "",
       password: "",
+      errorMessage: "",
     };
   },
   methods: {
     handleLogin() {
-      console.log("Logging in with:", this.email, this.password);
-      alert("Login functionality coming soon!");
+      if (this.email === "test@test.com" && this.password === "password") {
+        localStorage.setItem("user", this.email);
+        this.$emit("close");
+        this.$router.push("/");
+      } else {
+        this.errorMessage = "Invalid email or password!";
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-.login-container {
-  width: 350px;
-  margin: 50px auto;
-  padding: 25px;
-  text-align: center;
-  background: #F5F5DC; /* Soft White */
-  border-radius: 10px;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  color: #2E7D32; /* Dark Green */
-}
-
-form {
+/* Full-Screen Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-label {
-  font-weight: bold;
-  text-align: left;
-  margin-top: 10px;
-  color: #2E7D32;
+/* Modal Styling */
+.login-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 input {
+  width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  border: 2px solid #2E7D32;
-  border-radius: 5px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 button {
+  width: 100%;
   padding: 10px;
-  background: #1E88E5; /* Blue */
+  background: #2e7d32;
   color: white;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 15px;
-  font-size: 16px;
 }
 
 button:hover {
-  background: #1565C0;
+  background: #1b5e20;
 }
 
-p {
-  margin-top: 15px;
-  font-size: 14px;
+.error {
+  color: red;
 }
 
-a {
-  color: #FFD700; /* Golden Yellow */
-  font-weight: bold;
+span {
+  color: #2e7d32;
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>

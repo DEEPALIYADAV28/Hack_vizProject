@@ -1,38 +1,50 @@
-import { createStore } from 'vuex';
-import authService from '../services/auth';
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    user: JSON.parse(localStorage.getItem('user')) || null, // Load user from storage
+    user: localStorage.getItem("user") || null, // Store user info
   },
   mutations: {
-    setUser(state, user) {
+    SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user', JSON.stringify(user)); // Store in localStorage
+      localStorage.setItem("user", user);
     },
-    logout(state) {
+    LOGOUT(state) {
       state.user = null;
-      localStorage.removeItem('user');
-      authService.logout(); // Remove token
+      localStorage.removeItem("user");
     },
   },
   actions: {
-    async login({ commit }, userData) {
-      try {
-        const user = await authService.login(userData);
-        commit('setUser', user);
-        return user;
-      } catch (error) {
-        console.error('Login failed:', error);
-        throw error;
-      }
+    login({ commit }, { email, password }) {
+      return new Promise((resolve, reject) => {
+        // Mock API (Replace with real API request)
+        if (email === "test@example.com" && password === "password123") {
+          commit("SET_USER", email);
+          resolve();
+        } else {
+          reject("Invalid email or password!");
+        }
+      });
     },
+
+    register({ commit }, { name, email, password }) {
+      return new Promise((resolve, reject) => {
+        // Mock API (Replace with real API request)
+        if (email && password && name) {
+          commit("SET_USER", email);
+          resolve();
+        } else {
+          reject("Registration failed! Please check your details.");
+        }
+      });
+    },
+
     logout({ commit }) {
-      commit('logout');
+      commit("LOGOUT");
     },
   },
   getters: {
-    isAuthenticated: (state) => !!state.user,
+    isAuthenticated: (state) => !!state.user, // Check if user is logged in
     getUser: (state) => state.user,
   },
 });
