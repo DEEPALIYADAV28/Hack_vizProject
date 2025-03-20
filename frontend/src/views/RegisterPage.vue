@@ -1,48 +1,79 @@
-<template>
-  <div>
-    <h2>Register</h2>
-    <input v-model="username" placeholder="Username" />
-    <input v-model="email" placeholder="Email" />
-    <input v-model="password" placeholder="Password" type="password" />
-    <button @click="register">Register</button>
-    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+register <template>
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+    <form @submit.prevent="handleSignup">
+      <label>Name:</label>
+      <input type="text" v-model="name" required />
+
+      <label>Email:</label>
+      <input type="email" v-model="email" required />
+
+      <label>Password:</label>
+      <input type="password" v-model="password" required />
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <router-link to="/login">Login</router-link></p>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
-  name: 'RegisterPage',
+  name: "RegisterPage",
   data() {
     return {
-      username: '',
-      email: '',
-      password: '',
-      errorMessage: '',
+      name: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
-    ...mapActions(['register']),
-    async register() {
-      try {
-        await this.register({ username: this.username, email: this.email, password: this.password });
-        this.$router.push('/login');
-      } catch (error) {
-        this.errorMessage = 'Registration failed!';
-      }
+    handleSignup() {
+      console.log("Signing up with:", this.name, this.email, this.password);
+      alert("Signup functionality coming soon!");
     },
-  },
-  mounted() {
-    if (localStorage.getItem('user')) {
-      this.$router.push('/');
-    }
   },
 };
 </script>
 
 <style scoped>
-.error {
-  color: red;
+.signup-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #2E7D32;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background: #FFD700;
+  color: #2E7D32;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #FFC107;
 }
 </style>
