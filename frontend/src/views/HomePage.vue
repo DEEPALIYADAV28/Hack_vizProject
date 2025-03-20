@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="homepage">
     <!-- Hero Section -->
     <div class="hero-section">
@@ -25,18 +24,11 @@
         </div>
       </div>
     </div>
-=======
-  <div class="home-container">
-    <h1>Welcome to the Farmers Market System</h1>
-    <p>Get real-time market trends and price predictions.</p>
-    <router-link to="/market" class="button">View Market Trends</router-link>
->>>>>>> 8e8efc3810d52fe55ca88e12eeb1389bb4da7a03
   </div>
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
   data() {
     return {
       videos: {
@@ -51,14 +43,10 @@ export default {
       this.currentVideo = this.videos[lang];
     }
   }
-=======
-  name: 'HomePage',
->>>>>>> 8e8efc3810d52fe55ca88e12eeb1389bb4da7a03
 };
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 /* Hero Section */
 .hero-section {
   position: relative;
@@ -155,20 +143,5 @@ export default {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-=======
-.home-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
->>>>>>> 8e8efc3810d52fe55ca88e12eeb1389bb4da7a03
 }
 </style>
