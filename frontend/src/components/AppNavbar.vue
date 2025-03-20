@@ -28,7 +28,7 @@
     </div>
   </nav>
 
-  <!-- Modal Overlay (Clicking outside closes it) -->
+  <!-- Modal Overlay -->
   <div v-if="showLoginModal || showRegisterModal" class="modal-overlay" @click.self="closeModals">
     <div class="modal-content" @click.stop>
       <LoginPage 
@@ -73,10 +73,6 @@ export default {
     toggleLoginModal() {
       this.showLoginModal = !this.showLoginModal;
       this.showRegisterModal = false;
-    },
-    toggleRegisterModal() {
-      this.showRegisterModal = !this.showRegisterModal;
-      this.showLoginModal = false;
     },
     openRegisterModal() {
       this.showRegisterModal = true;
@@ -175,7 +171,6 @@ export default {
   z-index: 1000;
 }
 
-/* Ensures modal does not close when clicking inside */
 .modal-content {
   background: white;
   padding: 25px;
