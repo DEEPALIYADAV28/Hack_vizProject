@@ -5,29 +5,69 @@
       <span class="brand-name">KrishiSetu</span>
     </div>
 
-    <div class="navbar-links">
-      <router-link to="/market-trends">Market Trends</router-link>
-      <router-link to="/price-prediction">Price Prediction</router-link>
-      <router-link to="/marketplace">Marketplace</router-link>
-      <router-link to="/contact">Contact</router-link>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#market-trends">Market Trends</a></li>
+      <li><a href="#price-prediction">Price Prediction</a></li>
+      <li><a href="#marketplace">Marketplace</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-    <div class="nav-icons">
-      <select class="language-selector">
-        <option>GB English</option>
-        <option>Hindi</option>
+    <div class="right-section">
+      <!-- Language Selector -->
+      <select v-model="selectedLanguage" @change="changeLanguage" class="language-selector">
+        <option value="en">🇬🇧 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
       </select>
 
-      <!-- WhatsApp Icon without Button Background -->
-      <img src="@/assets/whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon">
+      <!-- WhatsApp Icon (No Text, Just Icon) -->
+      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-icon">
+        <img src="@/assets/whatsapp-icon.png" alt="WhatsApp">
+      </a>
 
-      <!-- Chat Button with Golden Yellow Background -->
-      <button class="chat-btn">Chat</button>
-
-      <img src="@/assets/user-icon.png" alt="User" class="user-icon">
+      <!-- Chatbot Button -->
+      <button class="chatbot-button" @click="openChatbot">
+        💬 Chat
+      </button>
     </div>
   </nav>
+
+  <!-- Modal Overlay (Clicking outside closes it) -->
+  <div v-if="showLoginModal || showRegisterModal" class="modal-overlay" @click.self="closeModals">
+    <div class="modal-content" @click.stop>
+      <LoginPage 
+        v-if="showLoginModal" 
+        @close="closeModals" 
+        @switchToRegister="openRegisterModal" 
+      />
+      
+      <RegisterPage 
+        v-if="showRegisterModal" 
+        @close="closeModals" 
+        @switchToLogin="openLoginModal" 
+      />
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  name: "AppNavbar",
+  data() {
+    return {
+      selectedLanguage: "en", // Default to English
+    };
+  },
+  methods: {
+    changeLanguage() {
+      console.log("Language changed to:", this.selectedLanguage);
+      // Here, you can integrate i18n for translations
+    },
+    openChatbot() {
+      alert("Chatbot coming soon! 🚀");
+    },
+  },
+};
+</script>
 
 <style scoped>
 /* Navbar Styling */
@@ -35,13 +75,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #256D1B; /* Dark Green */
-  padding: 10px 20px;
+  background-color: #2E7D32; /* Dark Green */
+  padding: 15px 20px;
   color: white;
 }
 
-/* Left Section */
-.navbar-left {
+/* Logo Container */
+.logo-container {
   display: flex;
   align-items: center;
 }
@@ -52,65 +92,54 @@
   margin-right: 10px;
 }
 
-.brand-name {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Center Links */
-.navbar-links {
+/* Navigation Links */
+.nav-links {
   display: flex;
   gap: 20px;
 }
 
-.navbar-links a {
+.nav-links a {
+  color: white;
   text-decoration: none;
   color: white;
   font-weight: bold;
-  padding: 10px 15px;
-  transition: 0.3s;
 }
 
-.navbar-links a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-}
-
-/* Right Section (Icons & Buttons) */
-.nav-icons {
+/* Right Section (Language, WhatsApp, Chatbot) */
+.right-section {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+/* Language Selector */
 .language-selector {
   padding: 5px;
   border-radius: 5px;
-}
-
-/* WhatsApp Icon Without Background */
-.whatsapp-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-/* Chat Button with Golden Yellow */
-.chat-btn {
-  padding: 8px 12px;
-  background-color: #FFC107; /* Golden Yellow */
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  color: black;
+  font-size: 16px;
 }
 
-/* User Icon */
-.user-icon {
-  width: 30px;
-  height: 30px;
+/* WhatsApp Button */
+.whatsapp-icon img {
+  height: 40px;
   cursor: pointer;
+}
+
+/* Chatbot Button */
+.chatbot-button {
+  background-color: #FFD700; /* Golden Yellow */
+  color: #2E7D32; /* Dark Green */
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chatbot-button:hover {
+  background-color: #F4C700;
 }
 
 </style>

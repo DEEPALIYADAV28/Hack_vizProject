@@ -1,20 +1,24 @@
-register <template>
-  <div class="signup-container">
-    <h2>Sign Up</h2>
-    <form @submit.prevent="handleSignup">
-      <label>Name:</label>
-      <input type="text" v-model="name" required />
+<template>
+  <div class="modal-overlay">
+    <div class="register-box">
+      <button class="close-btn" @click="$emit('close')">✖</button>
+      <h2>Create Your Account</h2>
+      <p>Join us today and explore amazing features</p>
 
-      <label>Email:</label>
-      <input type="email" v-model="email" required />
+      <form @submit.prevent="handleSignup">
+        <input type="text" v-model="name" placeholder="Enter your name" required />
+        <input type="email" v-model="email" placeholder="Enter your email" required />
+        <input type="password" v-model="password" placeholder="Enter your password" required />
+        <button type="submit">Sign Up</button>
+      </form>
 
-      <label>Password:</label>
-      <input type="password" v-model="password" required />
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
 
-      <button type="submit">Sign Up</button>
-    </form>
-
-    <p>Already have an account? <router-link to="/login">Login</router-link></p>
+      <p>
+        Already have an account? 
+        <span class="switch-link" @click="$emit('switchToLogin')">Login</span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -26,54 +30,83 @@ export default {
       name: "",
       email: "",
       password: "",
+      errorMessage: "",
     };
   },
   methods: {
-    handleSignup() {
-      console.log("Signing up with:", this.name, this.email, this.password);
-      alert("Signup functionality coming soon!");
+    async handleSignup() {
+      try {
+        // Simulate registration process
+        localStorage.setItem("user", this.email);
+        alert("Registration successful!");
+        this.$emit("close"); // Close modal after registration
+      } catch (error) {
+        this.errorMessage = "Registration failed! Try again.";
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-.signup-container {
-  width: 300px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  color: #2E7D32;
-}
-
-form {
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 input {
+  width: 90%;
   padding: 10px;
-  margin: 8px 0;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 button {
+  width: 100%;
   padding: 10px;
-  background: #FFD700;
-  color: #2E7D32;
+  background-color: #256D1B;
+  color: white;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-button:hover {
-  background: #FFC107;
+.switch-link {
+  color: #256D1B;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
 }
 </style>
