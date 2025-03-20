@@ -6,32 +6,29 @@
     </div>
 
     <ul class="nav-links">
-      <li><a href="#market-trends">Market Trends</a></li>
-      <li><a href="#price-prediction">Price Prediction</a></li>
-      <li><a href="#marketplace">Marketplace</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><router-link to="/market-trends">Market Trends</router-link></li>
+      <li><router-link to="/price-prediction">Price Prediction</router-link></li>
+      <li><router-link to="/marketplace">Marketplace</router-link></li>
+      <li><router-link to="/contact">Contact</router-link></li>
     </ul>
 
-    <div class="right-section">
-      <!-- Language Selector -->
+    <div class="nav-icons">
       <select v-model="selectedLanguage" @change="changeLanguage" class="language-selector">
         <option value="en">🇬🇧 English</option>
         <option value="hi">🇮🇳 हिंदी</option>
       </select>
 
-      <!-- WhatsApp Icon (No Text, Just Icon) -->
-      <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-icon">
-        <img src="@/assets/whatsapp-icon.png" alt="WhatsApp">
+      <a href="https://wa.me/919876543210" target="_blank">
+        <img src="@/assets/whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon">
       </a>
 
-      <!-- Chatbot Button -->
-      <button class="chatbot-button" @click="openChatbot">
-        💬 Chat
-      </button>
+      <button class="chat-btn" @click="openChatbot">💬 Chat</button>
+
+      <img src="@/assets/user-icon.png" alt="User" class="user-icon" @click="toggleLoginModal" />
     </div>
   </nav>
 
-  <!-- Modal Overlay -->
+  <!-- Modal Overlay (Clicking outside closes it) -->
   <div v-if="showLoginModal || showRegisterModal" class="modal-overlay" @click.self="closeModals">
     <div class="modal-content" @click.stop>
       <LoginPage 
@@ -50,22 +47,29 @@
 </template>
 
 <script>
+import LoginPage from '@/views/LoginPage.vue';
+import RegisterPage from '@/views/RegisterPage.vue';
+
 export default {
   name: "AppNavbar",
+  components: {
+    LoginPage,
+    RegisterPage,
+  },
   data() {
     return {
-      selectedLanguage: "en", // Default to English
+      selectedLanguage: "en",
+      showLoginModal: false,
+      showRegisterModal: false,
     };
   },
   methods: {
     changeLanguage() {
       console.log("Language changed to:", this.selectedLanguage);
-      // Here, you can integrate i18n for translations
     },
     openChatbot() {
       alert("Chatbot coming soon! 🚀");
     },
-<<<<<<< HEAD
     toggleLoginModal() {
       this.showLoginModal = !this.showLoginModal;
       this.showRegisterModal = false;
@@ -83,9 +87,6 @@ export default {
       this.showRegisterModal = false;
     }
   }
-=======
-  },
->>>>>>> 8e8efc3810d52fe55ca88e12eeb1389bb4da7a03
 };
 </script>
 
@@ -95,13 +96,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2E7D32; /* Dark Green */
-  padding: 15px 20px;
+  background-color: #256D1B;
+  padding: 10px 20px;
   color: white;
 }
 
-/* Logo Container */
-.logo-container {
+.navbar-left {
   display: flex;
   align-items: center;
 }
@@ -112,57 +112,66 @@ export default {
   margin-right: 10px;
 }
 
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  color: white;
+.brand-name {
+  font-size: 20px;
   font-weight: bold;
 }
 
-/* Right Section (Language, WhatsApp, Chatbot) */
-.right-section {
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.nav-icons {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* Language Selector */
-.language-selector {
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-}
-
-/* WhatsApp Button */
-.whatsapp-icon img {
-  height: 40px;
+.whatsapp-icon {
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
-/* Chatbot Button */
-.chatbot-button {
-  background-color: #FFD700; /* Golden Yellow */
-  color: #2E7D32; /* Dark Green */
-  border: none;
+.chat-btn {
   padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 8px;
+  background-color: #FFC107;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.chatbot-button:hover {
-  background-color: #F4C700;
+.user-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
-<<<<<<< HEAD
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Ensures modal does not close when clicking inside */
 .modal-content {
   background: white;
   padding: 25px;
@@ -172,6 +181,3 @@ export default {
   width: 350px;
 }
 </style>
-=======
-</style>
->>>>>>> 8e8efc3810d52fe55ca88e12eeb1389bb4da7a03
