@@ -6,9 +6,11 @@
     </div>
 
     <ul class="nav-links">
-      <li><router-link to="/market-trends">Market Trends</router-link></li>
+      <li><router-link to="/">Home</router-link></li>
+     
       <li><router-link to="/price-prediction">Price Prediction</router-link></li>
-      <li><router-link to="/marketplace">Marketplace</router-link></li>
+      <li><router-link to="/buyers">Buyers</router-link></li>
+      <li><router-link to="/market">Marketplace</router-link></li>
       <li><router-link to="/contact">Contact</router-link></li>
     </ul>
 
@@ -121,6 +123,7 @@ export default {
   display: flex;
   gap: 20px;
   list-style: none;
+  padding: 0;
 }
 
 .nav-links a {
@@ -129,6 +132,11 @@ export default {
   font-weight: bold;
   padding: 10px 15px;
   transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #FFC107;
+  border-radius: 5px;
 }
 
 .nav-icons {
@@ -171,7 +179,6 @@ export default {
   z-index: 1000;
 }
 
-/* Ensures modal does not close when clicking inside */
 .modal-content {
   background: white;
   padding: 25px;

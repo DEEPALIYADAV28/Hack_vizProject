@@ -1,12 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const marketDataSchema = new mongoose.Schema(
-  {
-    crop: { type: String, required: true, trim: true },
-    price: { type: Number, required: true, min: [0, 'Price must be positive'] },
-    date: { type: Date, default: Date.now },
-  },
-  { timestamps: true } // Automatically adds createdAt and updatedAt fields
-);
+const MarketDataSchema = new mongoose.Schema({
+    state: { type: String, required: true },
+    district: { type: String, required: true },
+    market: { type: String, required: true },
+    commodity: { type: String, required: true },
+    variety: { type: String },
+    grade: { type: String },
+    arrival_date: { type: Date, required: true },
+    min_price: { type: Number, required: true },
+    max_price: { type: Number, required: true },
+    modal_price: { type: Number, required: true }
+}, { timestamps: true });
 
-module.exports = mongoose.model('MarketData', marketDataSchema);
+module.exports = mongoose.model("MarketData", MarketDataSchema);

@@ -1,38 +1,17 @@
+// services/auth.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth';
+export async function login(credentials) {
+  return axios.post('http://localhost:5000/api/auth/login', credentials);
+}
 
-// Register User
-const register = async (userData) => {
-  const response = await axios.post(`${API_URL}/register`, userData);
-  return response.data;
-};
+export async function register(userData) {
+  return axios.post('http://localhost:5000/api/auth/register', userData);
+}
 
-// Login User
-const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/login`, userData);
-  
-  if (response.data.token) {
-    localStorage.setItem('token', response.data.token);
-  }
-  
-  return response.data;
-};
+export async function getUserProfile() {
+  return axios.get('http://localhost:5000/api/auth/profile');
+}
 
-// Logout User
-const logout = () => {
-  localStorage.removeItem('token');
-};
 
-// Get Auth Token
-const getToken = () => {
-  return localStorage.getItem('token');
-};
 
-// Set Authorization Header
-const setAuthHeader = () => {
-  const token = getToken();
-  return token ? { Authorization: `Bearer ${token}` } : {};
-};
-
-export default { register, login, logout, getToken, setAuthHeader };
