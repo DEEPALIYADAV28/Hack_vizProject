@@ -26,7 +26,6 @@
     <section class="about-us">
       <h2>About KrishiSetu</h2>
       <p>Connecting farmers with real-time data, AI insights, and profitable markets.</p>
-    
     </section>
 
     <!-- Features Section -->
@@ -57,7 +56,7 @@
     <!-- Call to Action -->
     <section class="cta">
       <h2>Join KrishiSetu Today</h2>
-      <button class="cta-button">Sign Up Now</button>
+      <button class="cta-button">Join Us</button>
     </section>
   </div>
 </template>
@@ -88,6 +87,7 @@ export default {
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0;
   margin-top: -10px;
 }
@@ -111,15 +111,27 @@ export default {
   width: 90%;
   max-width: 1200px;
   align-items: center;
+  justify-content: space-between;
 }
 .video-container {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensure video aligns centrally */
+  justify-content: center;
+  text-align: center; /* Center text if needed */
 }
+
+
 .intro-video {
-  width: 50%;
-  max-height: 300px;
-  object-fit: cover;
+  width: 50%; /* Ensure both videos take same width */
+  max-width: 500px; /* Restrict maximum width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure video scales correctly */
+  border-radius: 10px; /* Optional: Adds rounded corners */
 }
+
+
 .video-controls {
   display: flex;
   gap: 10px;
@@ -138,25 +150,95 @@ export default {
   text-align: left;
   color: white;
 }
-.about-us, .features, .testimonials, .cta {
-  padding: 50px;
-  text-align: center;
-  background: #f8f9fa;
-  margin-top: 20px;
-}
-.features .feature-list {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-.cta-button {
-  padding: 12px 20px;
-  background: #1E88E5;
+
+.about-us {
+  background-image: url("@/assets/about.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
+  padding: 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.features {
+  background-image: url("@/assets/features.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1000px;
+}
+
+.feature {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+.testimonials {
+  background-image: url("@/assets/Test.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  position: relative;
+}
+
+.cta {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: url("@/assets/footer.png") no-repeat center;
+  background-size: cover;
+}
+
+.cta-button {
+  padding: 12px 24px;
+  background: #FFC107;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: #FFA000;
 }
 </style>
