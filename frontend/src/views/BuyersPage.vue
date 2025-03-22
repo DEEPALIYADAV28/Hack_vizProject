@@ -2,14 +2,14 @@
   <div class="buyers-container">
     <h1 class="title">🤝 Connect with Verified Buyers</h1>
 
-    <!-- Hero Section -->
+    
     <div class="hero-section">
       <h2>Find the Right Buyer for Your Crops!</h2>
       <p>Sell your agricultural produce directly to retailers, wholesalers, and exporters.</p>
       <button class="register-btn">Register as a Seller</button>
     </div>
 
-    <!-- Categories Section -->
+ 
     <div class="categories">
       <h2>📌 Buyer Categories</h2>
       <div class="category-cards">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <!-- Featured Buyers -->
+   
     <div class="featured-buyers">
       <h2>🌟 Featured Buyers</h2>
       <table>
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style scoped>
-/* General Styling */
+
 .buyers-container {
   max-width: 1000px;
   margin: 20px auto;
@@ -84,7 +84,7 @@ export default {
   margin-bottom: 20px;
 }
 
-/* Hero Section */
+
 .hero-section {
   background: #f9f9f9;
   padding: 30px;
@@ -116,7 +116,7 @@ export default {
   background: #E68900;
 }
 
-/* Buyer Categories */
+
 .categories {
   margin-bottom: 30px;
 }
@@ -145,7 +145,7 @@ export default {
   font-size: 14px;
 }
 
-/* Featured Buyers Table */
+
 .featured-buyers table {
   width: 100%;
   border-collapse: collapse;
@@ -169,7 +169,7 @@ export default {
   font-weight: bold;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .category-cards {
     flex-direction: column;

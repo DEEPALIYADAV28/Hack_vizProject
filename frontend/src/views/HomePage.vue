@@ -1,11 +1,11 @@
 <template>
   <div class="homepage">
-    <!-- Hero Section -->
+    
     <div class="hero-section">
       <img src="@/assets/farmer-ai-background.jpg" alt="Farmer using AI" class="background-image" />
       <div class="overlay"></div>
       
-      <!-- Content: Video (Left) + Text (Right) -->
+      
       <div class="content">
         <div class="video-container">
           <video controls :src="currentVideo" class="intro-video"></video>
@@ -22,13 +22,13 @@
       </div>
     </div>
 
-    <!-- About Us Section -->
+    
     <section class="about-us">
       <h2>About KrishiSetu</h2>
       <p>Connecting farmers with real-time data, AI insights, and profitable markets.</p>
     </section>
 
-    <!-- Features Section -->
+    
     <section class="features">
       <h2>Why Choose KrishiSetu?</h2>
       <div class="feature-list">
@@ -47,13 +47,13 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+   
     <section class="testimonials">
       <h2>What Farmers Say</h2>
       <p>"KrishiSetu changed how I sell my crops! The price prediction tool is amazing!" - Ramesh Kumar</p>
     </section>
 
-    <!-- Call to Action -->
+    
     <section class="cta">
       <h2>Join KrishiSetu Today</h2>
       <button class="cta-button">Join Us</button>
@@ -117,18 +117,18 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Ensure video aligns centrally */
+  align-items: center; 
   justify-content: center;
-  text-align: center; /* Center text if needed */
+  text-align: center; 
 }
 
 
 .intro-video {
-  width: 50%; /* Ensure both videos take same width */
-  max-width: 500px; /* Restrict maximum width */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure video scales correctly */
-  border-radius: 10px; /* Optional: Adds rounded corners */
+  width: 50%; 
+  max-width: 500px; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 10px; 
 }
 
 

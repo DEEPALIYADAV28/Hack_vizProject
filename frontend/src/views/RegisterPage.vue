@@ -36,10 +36,10 @@ export default {
   methods: {
     async handleSignup() {
       try {
-        // Simulate registration process
+       
         localStorage.setItem("user", this.email);
         alert("Registration successful!");
-        this.$emit("close"); // Close modal after registration
+        this.$emit("close"); 
       } catch (error) {
         this.errorMessage = "Registration failed! Try again.";
       }
