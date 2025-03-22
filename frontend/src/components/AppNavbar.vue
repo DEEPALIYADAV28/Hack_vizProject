@@ -30,7 +30,7 @@
     </div>
   </nav>
 
-  <!-- Modal Overlay (Clicking outside closes it) -->
+  
   <div v-if="showLoginModal || showRegisterModal" class="modal-overlay" @click.self="closeModals">
     <div class="modal-content" @click.stop>
       <LoginPage 
@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style scoped>
-/* Navbar Styling */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -165,7 +165,7 @@ export default {
   cursor: pointer;
 }
 
-/* Modal Styling */
+
 .modal-overlay {
   position: fixed;
   top: 0;

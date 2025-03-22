@@ -50,7 +50,7 @@ export default {
   },
   async created() {
     try {
-      // Simulating API call with setTimeout (Replace with real API fetch)
+      
       setTimeout(() => {
         this.marketData = [
           { crop: "Wheat", region: "Punjab", price: 2500 },

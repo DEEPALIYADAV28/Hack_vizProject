@@ -50,7 +50,7 @@ export default {
       this.loading = true;
       this.predictedPrice = null;
 
-      // Simulating API call with timeout
+      
       setTimeout(() => {
         this.predictedPrice = Math.floor(Math.random() * 2000) + 1500; // Mock price range
         this.loading = false;

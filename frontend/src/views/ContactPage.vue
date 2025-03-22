@@ -3,7 +3,7 @@
       <h1 class="title">📞 Contact Us</h1>
   
       <div class="contact-content">
-        <!-- Left Section: Contact Form -->
+        
         <div class="contact-form">
           <h2>Send us a message</h2>
           <form @submit.prevent="submitForm">
@@ -26,7 +26,7 @@
           </form>
         </div>
   
-        <!-- Right Section: Contact Details & Map -->
+        
         <div class="contact-info">
           <h2>📍 Get in Touch</h2>
           <p><strong>Email:</strong> <a href="mailto:support@krishisetu.com">support@krishisetu.com</a></p>
@@ -60,7 +60,7 @@
     methods: {
       submitForm() {
         alert(`Thank you, ${this.form.name}! Your message has been sent.`);
-        // Reset form after submission
+       
         this.form.name = "";
         this.form.email = "";
         this.form.message = "";
@@ -70,7 +70,7 @@
   </script>
   
   <style scoped>
-  /* General Styling */
+  
   .contact-container {
     max-width: 1000px;
     margin: 20px auto;
@@ -87,7 +87,7 @@
     margin-bottom: 20px;
   }
   
-  /* Contact Section Layout */
+ 
   .contact-content {
     display: flex;
     gap: 20px;
@@ -95,7 +95,7 @@
     justify-content: space-between;
   }
   
-  /* Contact Form */
+ 
   .contact-form {
     flex: 1;
     min-width: 300px;
@@ -129,7 +129,7 @@
     border-radius: 5px;
   }
   
-  /* Submit Button */
+ 
   .submit-btn {
     background: #256D1B;
     color: white;
@@ -146,7 +146,7 @@
     background: #1A4E14;
   }
   
-  /* Contact Info */
+ 
   .contact-info {
     flex: 1;
     min-width: 300px;
@@ -171,7 +171,7 @@
     font-weight: bold;
   }
   
-  /* Google Maps */
+ 
   .map {
     width: 100%;
     height: 200px;
@@ -180,7 +180,7 @@
     margin-top: 10px;
   }
   
-  /* Responsive */
+ 
   @media (max-width: 768px) {
     .contact-content {
       flex-direction: column;
